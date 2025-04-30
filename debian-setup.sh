@@ -6,7 +6,7 @@ scriptstarttime=$(date)
 ################################################################################################################################################
 #                                   Use the curl command below to start the script
 # 
-#  bash <(curl --silent https://raw.githubusercontent.com/robertstrom/.sh) | tee kali-install-script.log
+#  bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh) | tee kali-install-script.log
 #
 #
 ################################################################################################################################################
