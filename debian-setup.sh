@@ -80,7 +80,6 @@ case "$arch" in
 esac
 
 
-
 # Enable the docker service
 sudo systemctl enable docker --now
 
@@ -173,6 +172,11 @@ case "$arch" in
     ;;
 esac
 popd
+
+# Download and Install CopyQ
+copyqdownload=$(curl -s https://api.github.com/repos/hluk/CopyQ/releases/latest | jq -r ".assets[].browser_download_url" | grep Debian_12)
+wget $copyqdownload -O ~/Downloads/copyq-amd64.deb
+sudo dpkg -i ~/Downloads/copyq-amd64.deb
 
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
