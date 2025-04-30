@@ -183,6 +183,10 @@ mkdir -p ~/.config/autostart/
 wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/com.github.hluk.copyq.desktop -O ~/.config/autostart/com.github.hluk.copyq.desktop
 chmod 600 ~/.config/autostart/com.github.hluk.copyq.desktop
 
+# Install glow terminal markdown renderer
+# https://github.com/charmbracelet/glow?tab=readme-ov-file
+go install github.com/charmbracelet/glow@latest
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
