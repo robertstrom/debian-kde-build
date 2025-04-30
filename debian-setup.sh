@@ -187,6 +187,11 @@ chmod 600 ~/.config/autostart/com.github.hluk.copyq.desktop
 # https://github.com/charmbracelet/glow?tab=readme-ov-file
 go install github.com/charmbracelet/glow@latest
 
+# Install the Microsoft markitdown Markdown converter
+git clone https://github.com/microsoft/markitdown.git
+cd markitdown
+docker build -t markitdown:latest .
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
@@ -194,6 +199,9 @@ sudo pip3 install -r requirements.txt
 sudo chmod +x wwwtree.py
 cd /usr/bin
 sudo ln -s /opt/wwwtree/wwwtree.py wwwtree
+
+# Change shell to zsh
+chsh -s /bin/zsh
 
 scriptendtime=$(date)
 echo " "
