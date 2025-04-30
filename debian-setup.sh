@@ -128,6 +128,11 @@ esac
 
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
+# Download and Install Vivaldi
+curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
+VIVALDI=$(ls vivaldi-stable*.deb)
+sudo dpkg -i $VIVALDI
+
 # Install python virtual environments venv
 pip install virtualenv
 
