@@ -178,6 +178,11 @@ copyqdownload=$(curl -s https://api.github.com/repos/hluk/CopyQ/releases/latest 
 wget $copyqdownload -O ~/Downloads/copyq-amd64.deb
 sudo dpkg -i ~/Downloads/copyq-amd64.deb
 
+# Download the com.github.hluk.copyq.desktop file from GitHub and copy it to the ~/.config/autostart/com.github.hluk.copyq.desktop file so that CopyQ will autostart on login
+mkdir -p ~/.config/autostart/
+wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/com.github.hluk.copyq.desktop -O ~/.config/autostart/com.github.hluk.copyq.desktop
+chmod 600 ~/.config/autostart/com.github.hluk.copyq.desktop
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
