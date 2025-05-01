@@ -224,6 +224,13 @@ wget $obsidianlatest -O ~/Downloads/obsidian-latest.deb
 sudo dpkg -i ~/Downloads/obsidian-latest.deb
 rm -rf ~/Downloads/obsidian-latest.deb
 
+# Install PowerShell
+
+powershelllatest=$(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | jq -r ".assets[].browser_download_url" | grep deb_amd64)
+wget $powershelllatest -O ~/Downloads/powershell-latest.deb
+sudo dpkg -i ~/Downloads/powershell-latest.deb
+rm -rf ~/Downloads/powershell-latest.deb
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
