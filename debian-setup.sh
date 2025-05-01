@@ -104,6 +104,9 @@ sudo systemctl enable docker --now
 
 ## Enable the xrdp service
 ## sudo systemctl enable xrdp --now
+## See this for enabling XRDP on a system running KDE Plasma using Wayland
+## XRDP Server on KDE Plasma
+## https://notes.benheater.com/books/linux-administration/page/xrdp-server-on-kde-plasma
 
 # Add the currenbt user to the docker group so that you don't need to use sudo to run docker commands
 sudo usermod -aG docker $USER
