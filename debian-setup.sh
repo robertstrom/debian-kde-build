@@ -3,15 +3,17 @@
 scriptstarttime=$(date)
 
 #
-############################################################################################################################################################
+#############################################################################################################################################################################
 #
 #
-#                                   Use the curl command below to start the script
+#                         NOTE: for some stupid reason curl is not included in the base Debian install and will need to be installed first
+#
+#                                                     Use the curl command below to start the script
 # 
-#  bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh) >> debian-install-script.log 2&>1
+#                        bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh)
 #
 #
-############################################################################################################################################################
+#############################################################################################################################################################################
 
 # Setting hostname
 read -p "What is the hostname of this machine? " sethostname
