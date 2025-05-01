@@ -196,6 +196,7 @@ popd
 copyqdownload=$(curl -s https://api.github.com/repos/hluk/CopyQ/releases/latest | jq -r ".assets[].browser_download_url" | grep Debian_12)
 wget $copyqdownload -O ~/Downloads/copyq-amd64.deb
 sudo dpkg -i ~/Downloads/copyq-amd64.deb
+rm -rf ~/Downloads/copyq-amd64.deb
 
 # Download the com.github.hluk.copyq.desktop file from GitHub and copy it to the ~/.config/autostart/com.github.hluk.copyq.desktop file so that CopyQ will autostart on login
 mkdir -p ~/.config/autostart/
@@ -210,6 +211,13 @@ go install github.com/charmbracelet/glow@latest
 git clone https://github.com/microsoft/markitdown.git
 cd markitdown
 docker build -t markitdown:latest .
+
+# Install Obsidian
+
+obsidianlatest=$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | jq -r ".assets[].browser_download_url" | grep deb)
+wget $obsidianlatest -O ~/Downloads/obsidian-latest.deb
+sudo dpkg -i ~/Downloads/obsidian-latest.deb
+rm -rf ~/Downloads/obsidian-latest.deb
 
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
