@@ -43,6 +43,10 @@ mkdir ~/Docker-Images
 sudo groupadd fuse
 sudo usermod -a -G fuse rstrom
 
+# Add the Debian Security repository to the sources.list file
+echo "deb http://security.debian.org/debian-security bookworm-security main" | sudo tee -a /etc/apt/sources.list
+
+
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -64,11 +68,11 @@ arch=$(uname -m)
 
 case "$arch" in
   x86_64|amd64)
-    sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator copyq xclip dolphin krusader \
-    flameshot html2text csvkit remmina sipcalc xsltproc rinetd torbrowser-launcher httptunnel tesseract-ocr ncdu grepcidr speedtest-cli
+    sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator xclip dolphin krusader \
+    flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
-    ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker docker-compose \
-    obsidian golang sublist3r tcpspy xrdp mono-complete zsh
+    ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker docker-compose pip virtualenv python3-virtualenv pipx \
+    golang sublist3r tcpspy xrdp mono-complete zsh
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -221,6 +225,8 @@ wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/m
 
 # Change shell to zsh
 chsh -s /bin/zsh
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 scriptendtime=$(date)
 echo " "
