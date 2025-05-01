@@ -72,7 +72,7 @@ case "$arch" in
     flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli \
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
     ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker pip virtualenv python3-virtualenv pipx \
-    golang sublist3r tcpspy xrdp mono-complete zsh
+    golang sublist3r tcpspy mono-complete zsh
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -103,7 +103,7 @@ esac
 sudo systemctl enable docker --now
 
 ## Enable the xrdp service
-sudo systemctl enable xrdp --now
+## sudo systemctl enable xrdp --now
 
 # Add the currenbt user to the docker group so that you don't need to use sudo to run docker commands
 sudo usermod -aG docker $USER
