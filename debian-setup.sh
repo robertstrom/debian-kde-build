@@ -116,15 +116,15 @@ sudo usermod -aG docker $USER
 ## An alternate way of getting the current version information from GitHub
 ## curl -Ls https://api.github.com/repos/docker/compose/releases/latest | grep browser_download | egrep linux-aarch64\"$ | awk -F"\""  '{ print $4 }'
 
-## dockercomposelatestamd64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-x86_64$)
-## dockercomposelatestaarch64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-aarch64$)
-## DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-## mkdir -p $DOCKER_CONFIG/cli-plugins
+dockercomposelatestamd64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-x86_64$)
+dockercomposelatestaarch64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-aarch64$)
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
 
 case "$arch" in
   x86_64|amd64)
     echo "Architecture: x86-64 (64-bit)"
-    ## wget $dockercomposelatestamd64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
+    wget $dockercomposelatestamd64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -144,7 +144,7 @@ case "$arch" in
     ;;
 esac
 
-## chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # Download and Install Vivaldi
 curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
