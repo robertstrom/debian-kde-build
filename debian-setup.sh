@@ -216,6 +216,10 @@ sudo chmod +x wwwtree.py
 cd /usr/bin
 sudo ln -s /opt/wwwtree/wwwtree.py wwwtree
 
+# Modify Power Settings
+mv ~/.config/powermanagementprofilesrc ~/.config/powermanagementprofilesrc.old
+wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-power-settings -O ~/.config/powermanagementprofilesrc
+
 # Change shell to zsh
 chsh -s /bin/zsh
 
