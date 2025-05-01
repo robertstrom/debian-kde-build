@@ -67,8 +67,8 @@ case "$arch" in
     sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator copyq xclip dolphin krusader \
     flameshot html2text csvkit remmina sipcalc xsltproc rinetd torbrowser-launcher httptunnel tesseract-ocr ncdu grepcidr speedtest-cli
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
-    ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip eza docker-ce docker-ce-cli containerd.io \
-    docker-buildx-plugin docker-compose-plugin obsidian golang-go ligolo-ng sublist3r tcpspy xrdp mono-complete zsh
+    ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker docker-compose \
+    obsidian golang sublist3r tcpspy xrdp mono-complete zsh
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
