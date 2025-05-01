@@ -3,13 +3,15 @@
 scriptstarttime=$(date)
 
 #
-################################################################################################################################################
+############################################################################################################################################################
+#
+#
 #                                   Use the curl command below to start the script
 # 
-#  bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh) | tee kali-install-script.log
+#  bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh) >> debian-install-script.log 2&>1
 #
 #
-################################################################################################################################################
+############################################################################################################################################################
 
 # Setting hostname
 read -p "What is the hostname of this machine? " sethostname
@@ -41,6 +43,20 @@ mkdir ~/Docker-Images
 sudo groupadd fuse
 sudo usermod -a -G fuse rstrom
 
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
 sudo DEBIAN_FRONTEND=noninteractive apt update && sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -yq
 
 
@@ -51,9 +67,9 @@ case "$arch" in
     sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator copyq xclip dolphin krusader \
     flameshot html2text csvkit remmina sipcalc \
     xsltproc rinetd torbrowser-launcher httptunnel tesseract-ocr ncdu grepcidr speedtest-cli sshuttle mpack filezilla lolcat \
-    ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils ffmpeg \
-    zbar-tools gnupg2 dc3dd rlwrap fastfetch hyfetch lolcat 7zip-standalone eza docker.io docker-cli \
-    code-oss obsidian trufflehog python3-trufflehogregexes golang-go ligolo-ng sublist3r tcpspy xrdp mono-complete
+    ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils ffmpeg gnupg fonts-liberation \
+    zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip eza docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+    code-oss obsidian trufflehog python3-trufflehogregexes golang-go ligolo-ng sublist3r tcpspy xrdp mono-complete zsh
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -68,7 +84,7 @@ case "$arch" in
     flameshot html2text csvkit remmina kali-wallpapers-all hollywood-activate kali-screensaver gridsite-clients sipcalc \
     xsltproc rinetd httptunnel kerberoast tesseract-ocr ncdu grepcidr speedtest-cli sshuttle mpack filezilla lolcat \
     ripgrep bat dcfldd redis-tools feroxbuster name-that-hash jq keepassxc okular exfat-fuse exfatprogs kate xsel pandoc poppler-utils ffmpeg \
-    zbar-tools gnupg2 dc3dd rlwrap partitionmanager kali-undercover fastfetch hyfetch lolcat 7zip-standalone eza autorecon docker.io docker-cli \
+    zbar-tools gnupg2 dc3dd rlwrap partitionmanager kali-undercover fastfetch hyfetch lolcat 7zip-standalone eza \
     code-oss obsidian breeze-icon-theme trufflehog python3-trufflehogregexes coercer golang-go ligolo-ng sublist3r tcpspy xrdp libraspberrypi-bin
     ;;
   ppc64le)
@@ -97,15 +113,15 @@ sudo usermod -aG docker $USER
 ## An alternate way of getting the current version information from GitHub
 ## curl -Ls https://api.github.com/repos/docker/compose/releases/latest | grep browser_download | egrep linux-aarch64\"$ | awk -F"\""  '{ print $4 }'
 
-dockercomposelatestamd64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-x86_64$)
-dockercomposelatestaarch64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-aarch64$)
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
+## dockercomposelatestamd64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-x86_64$)
+## dockercomposelatestaarch64=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r ".assets[].browser_download_url" | grep docker-compose-linux-aarch64$)
+## DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+## mkdir -p $DOCKER_CONFIG/cli-plugins
 
 case "$arch" in
   x86_64|amd64)
     echo "Architecture: x86-64 (64-bit)"
-    wget $dockercomposelatestamd64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
+    ## wget $dockercomposelatestamd64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -115,7 +131,7 @@ case "$arch" in
     ;;
   aarch64)
     echo "Architecture: AArch64 (64-bit ARM)"
-    wget $dockercomposelatestaarch64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
+    ## wget $dockercomposelatestaarch64 -O $DOCKER_CONFIG/cli-plugins/docker-compose
     ;;
   ppc64le)
     echo "Architecture: PowerPC 64-bit Little Endian"
@@ -125,7 +141,7 @@ case "$arch" in
     ;;
 esac
 
-chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+## chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # Download and Install Vivaldi
 curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
@@ -209,4 +225,4 @@ echo "The script started at $scriptstarttime"
 echo " "
 echo "The script completed at $scriptendtime"
 echo " "
-echo "The installation and configuration of this new Kali build has completed"
+echo "The installation and configuration of this new Debian build has completed"
