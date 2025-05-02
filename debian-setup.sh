@@ -264,7 +264,7 @@ chsh -s /bin/zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Change zsh theme to agnoster
-sed 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
 
 scriptendtime=$(date)
 echo " "
