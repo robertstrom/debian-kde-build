@@ -273,6 +273,9 @@ cd ~/fzf
 ./install --all
 cd ~/
 
+# Added for ohmyzsh fzf plugin
+echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+
 scriptendtime=$(date)
 echo " "
 echo "The script started at $scriptstarttime"
