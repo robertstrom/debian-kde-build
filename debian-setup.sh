@@ -75,7 +75,7 @@ case "$arch" in
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
     ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker pip virtualenv python3-virtualenv pipx \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst \
-    virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools libosinfo-bin tuned
+    virt-manager virt-viewer ovmf swtpm qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
