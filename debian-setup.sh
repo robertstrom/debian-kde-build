@@ -265,6 +265,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Change zsh theme to agnoster
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
+sed -i 's/plugins=(git)/plugins=(git autojump colored-man-pages colorize copyfile copypath fzf zsh-bat zsh-eza zsh-autosuggestions zsh-syntax-highlighting)/'
 
 scriptendtime=$(date)
 echo " "
