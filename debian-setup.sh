@@ -265,7 +265,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Change zsh theme to agnoster
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
-sed -i 's/plugins=(git)/plugins=(git autojump colored-man-pages colorize copyfile copypath fzf zsh-bat eza zsh-autosuggestions zsh-syntax-highlighting)/'
+sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/'
+
+# Install fzf via github
+git clone --depth 1 https://github.com/junegunn/fzf.git
+cd ~/fzf
+./install --all
+cd ~/
 
 scriptendtime=$(date)
 echo " "
