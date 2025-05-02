@@ -232,6 +232,13 @@ wget $powershelllatest -O ~/Downloads/powershell-latest.deb
 sudo dpkg -i ~/Downloads/powershell-latest.deb
 rm -rf ~/Downloads/powershell-latest.deb
 
+## Download the VirtIO drivers
+pushd ~/Downloads
+wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/virtio-win-0.1.271.iso
+
+## Enable thelibvirt service
+sudo systemctl enable libvirtd.service
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
