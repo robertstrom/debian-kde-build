@@ -276,6 +276,9 @@ cd ~/
 # Added for ohmyzsh fzf plugin
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
 
+# Added for launching the glow (and possibly other go applications) without having to specify the full path
+export PATH="/home/rstrom/go/bin/":$PATH
+
 scriptendtime=$(date)
 echo " "
 echo "The script started at $scriptstarttime"
