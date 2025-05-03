@@ -48,6 +48,9 @@ sudo usermod -a -G fuse rstrom
 # Add the Debian Security repository to the sources.list file
 echo "deb http://security.debian.org/debian-security bookworm-security main" | sudo tee -a /etc/apt/sources.list
 
+# Add this repository so that I can install the torbrowser-launcher
+echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free" | sudo tee -a /etc/apt/sources.list
+
 
 # Add Docker's official GPG key:
 sudo apt-get update
@@ -63,17 +66,6 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-# Add tor.list to the sources
-# https://support.torproject.org/apt/
-sudo apt install apt-transport-https gnupg gnupg2
-sudo touch /etc/apt/sources.list.d/tor.list
-distribution=$(cat /etc/os-release | grep VERSION_CODENAME | awk -F"=" '{ print $2 }')
-echo "deb [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org $distribution main" | sudo tee -a /etc/apt/sources.list.d/tor.list
-echo "deb-src [signed-by=/usr/share/keyrings/deb.torproject.org-keyring.gpg] https://deb.torproject.org/torproject.org $distribution main" | sudo tee -a /etc/apt/sources.list.d/tor.list
-wget -qO- https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --dearmor | sudo tee /usr/share/keyrings/deb.torproject.org-keyring.gpg >/dev/null
-
-
-
 sudo DEBIAN_FRONTEND=noninteractive apt update && sudo DEBIAN_FRONTEND=noninteractive apt full-upgrade -yq
 
 arch=$(uname -m)
@@ -86,7 +78,7 @@ case "$arch" in
     ffmpeg fonts-liberation zbar-tools dc3dd rlwrap lolcat 7zip pip virtualenv python3-virtualenv pipx \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm \
     qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop ncdu vlc stacer audacity obs-studio handbrake handbrake-cli \
-    slack docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin tor deb.torproject.org-keyring
+    slack docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin torbrowser-launcher apt-transport-https
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
