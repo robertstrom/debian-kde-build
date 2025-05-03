@@ -244,6 +244,7 @@ go install github.com/charmbracelet/glow@latest
 git clone https://github.com/microsoft/markitdown.git
 cd markitdown
 docker build -t markitdown:latest .
+cd -
 
 # Install Obsidian
 
