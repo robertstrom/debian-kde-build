@@ -275,6 +275,9 @@ cd ~/fzf
 ./install --all
 cd ~/
 
+# Install Rust
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 # Added for ohmyzsh fzf plugin
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
 
