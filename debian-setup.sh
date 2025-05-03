@@ -288,8 +288,9 @@ sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
 sudo pip3 install -r requirements.txt
 sudo chmod +x wwwtree.py
-cd /usr/bin
+pushd /usr/bin
 sudo ln -s /opt/wwwtree/wwwtree.py wwwtree
+popd
 
 # Modify Power Settings
 mv ~/.config/powermanagementprofilesrc ~/.config/powermanagementprofilesrc.old
