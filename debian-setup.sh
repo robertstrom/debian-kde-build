@@ -71,11 +71,12 @@ arch=$(uname -m)
 case "$arch" in
   x86_64|amd64)
     sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator xclip dolphin krusader kdiff3 kompare xxdiff \
-    krename flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli \
+    krename ksnip flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli \
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
     ffmpeg gnupg fonts-liberation zbar-tools gnupg2 dc3dd rlwrap lolcat 7zip docker pip virtualenv python3-virtualenv pipx \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm \
-    qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop ncdu 
+    qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop ncdu vlc stacer audacity obs-studio handbrake handbrake-cli \
+    slack
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -167,6 +168,16 @@ sudo apt install code
 # Install wine
 sudo dpkg --add-architecture i386 && sudo apt update
 sudo apt install wine wine32 wine64 libwine libwine:i386 fonts-wine
+
+# Install Signal Desktop
+wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+sudo apt update && sudo apt install signal-desktop
+
+# Install Discord
+wget -O ~/Downloads/discord.deb "https://discord.com/api/download?platform=linux&format=deb"
+sudo apt install ~/Downloads/discord.deb
+rm ~/Downloads/discord.deb
 
 # Download and Install Vivaldi
 curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
