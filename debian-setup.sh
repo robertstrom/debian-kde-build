@@ -163,20 +163,20 @@ rm -f packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 
 sudo apt update
-sudo apt install code
+sudo apt install -y code
 
 # Install wine
 sudo dpkg --add-architecture i386 && sudo apt update
-sudo apt install wine wine32 wine64 libwine libwine:i386 fonts-wine
+sudo apt install -y wine wine32 wine64 libwine libwine:i386 fonts-wine
 
 # Install Signal Desktop
 wget -O- https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
-sudo apt update && sudo apt install signal-desktop
+sudo apt update && sudo apt install -y signal-desktop
 
 # Install Discord
 wget -O ~/Downloads/discord.deb "https://discord.com/api/download?platform=linux&format=deb"
-sudo apt install ~/Downloads/discord.deb
+sudo apt install -y ~/Downloads/discord.deb
 rm ~/Downloads/discord.deb
 
 # Download and Install Vivaldi
