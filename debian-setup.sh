@@ -152,6 +152,18 @@ esac
 
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
+# Install Visual Studio Code
+
+cd
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+rm -f packages.microsoft.gpg
+
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+
+sudo apt update
+sudo apt install code
+
 # Download and Install Vivaldi
 curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
 VIVALDI=$(ls vivaldi-stable*.deb)
