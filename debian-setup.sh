@@ -183,6 +183,7 @@ rm ~/Downloads/discord.deb
 curl -s https://vivaldi.com/download/ | grep -oP 'https://[^"]+amd64\.deb' | xargs wget
 VIVALDI=$(ls vivaldi-stable*.deb)
 sudo dpkg -i $VIVALDI
+rm $VIVALDI
 
 # Install python virtual environments venv
 pip install virtualenv
