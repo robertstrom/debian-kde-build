@@ -278,6 +278,9 @@ cd ~/
 # Install Rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+# Install macchina (fastfetch alternative)
+cargo install macchina
+
 # Added for ohmyzsh fzf plugin
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
 
