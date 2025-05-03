@@ -273,6 +273,14 @@ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.lis
 sudo apt update
 sudo apt install -y eza
 
+## Updog web server
+## https://github.com/sc0tfree/updog
+pipx install updog
+
+# Install Python HTTP Upload server
+# https://pypi.org/project/uploadserver/
+pipx install uploadserver
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 cd /opt/wwwtree
