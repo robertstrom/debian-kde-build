@@ -117,6 +117,9 @@ sudo systemctl enable docker --now
 # Add the currenbt user to the docker group so that you don't need to use sudo to run docker commands
 sudo usermod -aG docker $USER
 
+# Ensure that the users in the docker group have the permissions to execute docker run commands
+sudo chmod 666 /var/run/docker.sock
+
 # Install docker compose
 
 ## One way of getting the current version information from GitHub
