@@ -285,6 +285,10 @@ pipx install updog
 # https://pypi.org/project/uploadserver/
 pipx install uploadserver
 
+# Install knosave
+# https://github.com/Prayag2/konsave
+pipx install konsave
+
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 pushd /opt/wwwtree
