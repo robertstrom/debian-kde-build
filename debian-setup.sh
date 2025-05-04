@@ -311,7 +311,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 cargo install macchina
 
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
-export PATH="/home/rstrom/go/bin/":$PATH
+export PATH="/home/rstrom/go/bin/:~/.local/bin":$PATH
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
