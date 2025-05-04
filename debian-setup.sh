@@ -191,10 +191,6 @@ rm $VIVALDI
 # Install python virtual environments venv
 pip install virtualenv
 
-# pipx ensurepath
-pipx ensurepath
-## sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
-
 ## 2024-11-09 - Added the install of 1password
 pushd ~/Downloads
 
@@ -330,6 +326,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git
 pushd ~/fzf
 ./install --all
 popd
+
+# pipx ensurepath
+pipx ensurepath
+## sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
 
 ## bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh) && chmod a+x ~/.zshrc
 
