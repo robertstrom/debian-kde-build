@@ -7,7 +7,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
 ### Command to test differnet way to modify the ohmyzsh plugins
 ## sed -i 's/plugins=(git)/plugins=(git\nautojump\ncolored-man-pages\ncolorize\ncopyfile\ncopypath\nfzf\neza)/'
-sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/'
+sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/' ~/.zshrc
 
 # Added for ohmyzsh fzf plugin
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
