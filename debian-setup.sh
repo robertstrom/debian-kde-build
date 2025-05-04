@@ -307,7 +307,24 @@ cargo install macchina
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
 export PATH="/home/rstrom/go/bin/":$PATH
 
-bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh)
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Change zsh theme to agnoster
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
+### Command to test differnet way to modify the ohmyzsh plugins
+## sed -i 's/plugins=(git)/plugins=(git\nautojump\ncolored-man-pages\ncolorize\ncopyfile\ncopypath\nfzf\neza)/'
+sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/' ~/.zshrc
+
+# Added for ohmyzsh fzf plugin
+echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+
+# Install fzf via github
+git clone --depth 1 https://github.com/junegunn/fzf.git
+cd ~/fzf
+./install --all
+cd ~/
+
+## bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh) && chmod a+x ~/.zshrc
 
 
 scriptendtime=$(date)
