@@ -286,7 +286,7 @@ pipx install uploadserver
 
 # Install wwwtree
 sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
-cd /opt/wwwtree
+pushd /opt/wwwtree
 sudo pip3 install -r requirements.txt
 sudo chmod +x wwwtree.py
 pushd /usr/bin
