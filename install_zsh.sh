@@ -9,6 +9,9 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' .zshrc
 ## sed -i 's/plugins=(git)/plugins=(git\nautojump\ncolored-man-pages\ncolorize\ncopyfile\ncopypath\nfzf\neza)/'
 sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/'
 
+# Added for ohmyzsh fzf plugin
+echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+
 # Install fzf via github
 git clone --depth 1 https://github.com/junegunn/fzf.git
 cd ~/fzf
