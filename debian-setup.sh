@@ -245,6 +245,7 @@ chmod 600 ~/.config/autostart/com.github.hluk.copyq.desktop
 go install github.com/charmbracelet/glow@latest
 
 # Install the Microsoft markitdown Markdown converter
+# https://github.com/microsoft/markitdown
 git clone https://github.com/microsoft/markitdown.git
 cd markitdown
 docker build -t markitdown:latest .
