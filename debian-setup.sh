@@ -289,6 +289,7 @@ sudo git clone https://github.com/t3l3machus/wwwtree /opt/wwwtree
 pushd /opt/wwwtree
 sudo pip3 install -r requirements.txt
 sudo chmod +x wwwtree.py
+popd
 pushd /usr/bin
 sudo ln -s /opt/wwwtree/wwwtree.py wwwtree
 popd
