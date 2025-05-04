@@ -203,6 +203,7 @@ case "$arch" in
     echo "Architecture: x86-64 (64-bit)"
     wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
     sudo dpkg -i 1password-latest.deb
+    rm 1password-latest.deb
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
@@ -320,10 +321,11 @@ sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypat
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
 
 # Install fzf via github
+cd ~
 git clone --depth 1 https://github.com/junegunn/fzf.git
-cd ~/fzf
+pushd ~/fzf
 ./install --all
-cd ~/
+popd
 
 ## bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh) && chmod a+x ~/.zshrc
 
