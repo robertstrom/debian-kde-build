@@ -307,7 +307,7 @@ cargo install macchina
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
 export PATH="/home/rstrom/go/bin/":$PATH
 
-bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh
+bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh)
 
 
 scriptendtime=$(date)
