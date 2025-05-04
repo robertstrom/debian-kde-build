@@ -297,8 +297,20 @@ popd
 mv ~/.config/powermanagementprofilesrc ~/.config/powermanagementprofilesrc.old
 wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-power-settings -O ~/.config/powermanagementprofilesrc
 
+# Install Rust
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+# Install macchina (fastfetch alternative)
+cargo install macchina
+
+# Added for ohmyzsh fzf plugin
+echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+
+# Added for launching the glow (and possibly other go applications) without having to specify the full path
+export PATH="/home/rstrom/go/bin/":$PATH
+
 # Change shell to zsh
-chsh -s /bin/zsh
+# chsh -s /bin/zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -314,17 +326,6 @@ cd ~/fzf
 ./install --all
 cd ~/
 
-# Install Rust
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-
-# Install macchina (fastfetch alternative)
-cargo install macchina
-
-# Added for ohmyzsh fzf plugin
-echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
-
-# Added for launching the glow (and possibly other go applications) without having to specify the full path
-export PATH="/home/rstrom/go/bin/":$PATH
 
 scriptendtime=$(date)
 echo " "
