@@ -312,7 +312,17 @@ cargo install macchina
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
 export PATH="/home/rstrom/go/bin/:~/.local/bin":$PATH
 
+####################################################################################################################
+#
+#                                                   Install ohmyzsh
+#
+#         You will need to the exit after ohmyzsh is installed and enters the zsh prompt to complete the script
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#
+#
+#####################################################################################################################
 
 # Change zsh theme to agnoster
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
