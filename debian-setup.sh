@@ -309,8 +309,6 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Install macchina (fastfetch alternative)
 cargo install macchina
 
-# Added for launching the glow (and possibly other go applications) without having to specify the full path
-export PATH="/home/rstrom/go/bin/:~/.local/bin":$PATH
 
 ####################################################################################################################
 #
@@ -343,6 +341,9 @@ popd
 # pipx ensurepath
 pipx ensurepath
 ## sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
+
+# Added for launching the glow (and possibly other go applications) without having to specify the full path
+export PATH="/home/rstrom/go/bin/:~/.local/bin":$PATH
 
 ## bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh) && chmod a+x ~/.zshrc
 
