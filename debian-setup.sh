@@ -52,7 +52,7 @@ sudo usermod -a -G fuse rstrom
 echo "deb http://security.debian.org/debian-security bookworm-security main" | sudo tee -a /etc/apt/sources.list
 
 # Add this repository so that I can install the torbrowser-launcher
-echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free" | sudo tee -a /etc/apt/sources.list
+# echo "deb http://deb.debian.org/debian/ bookworm main contrib non-free" | sudo tee -a /etc/apt/sources.list
 
 
 # Add Docker's official GPG key:
