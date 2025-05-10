@@ -24,7 +24,7 @@ getprevhostname=$(grep 127.0.1.1 /etc/hosts | awk '{ print $2 }')
 sudo  sed -i "s/$getprevhostname/$sethostname/" /etc/hosts
 
 # Fix /etc/apt/source.list to comment out the cdrom as a source 
-sudo sed '/^deb cdrom/ s/./# &/' /etc/apt/sources.list
+sudo sed -i '/^deb cdrom/ s/./# &/' /etc/apt/sources.list
 
 touch ~/.screenrc
 echo "# Enable mouse scrolling and scroll bar history scrolling" > ~/.screenrc
