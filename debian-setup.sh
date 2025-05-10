@@ -341,10 +341,11 @@ popd
 
 
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
-export PATH="$PATH:/home/rstrom/go/bin/"
+# Also added the pipx ensure path since the install adds it to the bash profile, not the zshrc profile file since zsh is not active yet
+echo "export PATH="$PATH:/home/rstrom/go/bin/:/home/rstrom/.local/bin"" >> .zshrc
 
 # pipx ensurepath
-pipx ensurepath
+# pipx ensurepath
 ## sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
 
 ## bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/install_zsh.sh) && chmod a+x ~/.zshrc
