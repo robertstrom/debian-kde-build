@@ -7,10 +7,11 @@ scriptstarttime=$(date)
 #
 #
 #                         NOTE: for some stupid reason curl is not included in the base Debian install and will need to be installed first
+#                                                 the command below has been modified to install curl also
 #
 #                                                     Use the curl command below to start the script
 # 
-#                        bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh)
+#      command -v curl || sudo apt install curl && bash <(curl --silent https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/main/debian-setup.sh)
 #
 #
 #############################################################################################################################################################################
