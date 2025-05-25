@@ -339,6 +339,9 @@ pushd ~/fzf
 ./install --all
 popd
 
+# Clone the tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
 # Also added the pipx ensure path since the install adds it to the bash profile, not the zshrc profile file since zsh is not active yet
