@@ -342,6 +342,47 @@ popd
 # Clone the tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Nerd Fonts 
+
+mkdir -p ~/.local/share/fonts
+
+# Terminess Nerd Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Terminus.zip
+# Nerd Font Symbols
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/NerdFontsSymbolsOnly.zip
+# Pro Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/ProFont.zip
+# M+ Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/MPlus.zip
+# Open Dyslexic Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/OpenDyslexic.zip
+# Monoid Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Monoid.zip
+# Meslo Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip
+# JetBrains Mono Font
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+
+pushd ~/.local/share/fonts
+unzip Terminus.zip
+rm Terminus.zip
+unzip NerdFontsSymbolsOnly.zip
+rm NerdFontsSymbolsOnly.zip
+unzip ProFont.zip
+rm ProFont.zip
+unzip MPlus.zip
+rm MPlus.zip
+unzip OpenDyslexic.zip
+rm OpenDyslexic.zip
+unzip Monoid.zip
+rm Monoid.zip
+unzip Meslo.zip
+rm Meslo.zip
+unzip JetBrainsMono.zip
+rm JetBrainsMono.zip 
+fc-cache -fv
+popd  
+
 
 # Added for launching the glow (and possibly other go applications) without having to specify the full path
 # Also added the pipx ensure path since the install adds it to the bash profile, not the zshrc profile file since zsh is not active yet
