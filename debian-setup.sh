@@ -77,7 +77,7 @@ arch=$(uname -m)
 case "$arch" in
   x86_64|amd64)
     sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator xclip dolphin krusader kdiff3 kompare xxdiff \
-    krename ksnip flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli \
+    krename ksnip flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli cifs-utils \
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils \
     ffmpeg fonts-liberation zbar-tools dc3dd rlwrap lolcat 7zip pip virtualenv python3-virtualenv pipx tcpdump tmux fd-find tldr trash-cli \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm locate \
