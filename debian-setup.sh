@@ -310,6 +310,10 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y
 # Install macchina (fastfetch alternative)
 cargo install macchina
 
+# Install broot directory navigation tool
+# https://dystroy.org/broot/
+cargo install --locked --features clipboard broot
+
 
 ####################################################################################################################
 #
