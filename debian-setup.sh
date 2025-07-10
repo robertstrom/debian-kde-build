@@ -314,6 +314,10 @@ cargo install macchina
 # https://dystroy.org/broot/
 cargo install --locked --features clipboard broot
 
+# Install zoxide - cd replacement
+# https://github.com/ajeetdsouza/zoxide
+cargo install zoxide
+
 
 ####################################################################################################################
 #
