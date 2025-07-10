@@ -143,6 +143,27 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 ## alias history="history 0"
 alias history='history -i 1'
 
+
+setopt EXTENDED_HISTORY		# record command start time
+# Turn off setopt INC_APPEND_HISTORY if setopt share_history is enabled
+# setopt INC_APPEND_HISTORY
+setopt INC_APPEND_HISTORY_TIME	# append command to history file immediately after execution
+setopt share_history
+
+# History configurations
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=200000
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+#setopt share_history         # share command history data
+
+# force zsh to show the complete history
+## alias history="history 0"
+alias history='history -i 1'
+
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
@@ -179,6 +200,11 @@ alias docker-start-ubuntu1604='docker run -it ubuntu1604'
 alias docker-start-ubuntu1404='docker run -it ubuntu1404'
 alias docker-delete-dangling-images='docker rmi -f $(sudo docker images -f "dangling=true" -q)'
 
+# SSH aliases
+alias ssh-kali-proxmox='ssh rstrom@kali-proxmox-3'
+alias ssh-do3='ssh rstrom@do3.robertstrom.org'
+alias ssh-do4='ssh rstrom@do4.robertstrom.org'
+alias ssh-proxmox='ssh root@proxmox-3'
 
 # Functions added - 4/10/2022 RStrom
 function grepEmailAddresses() {
@@ -408,3 +434,7 @@ export PATH="$PATH:/home/rstrom/go/bin/"
 export PATH="$PATH:/home/rstrom/.local/bin"
 
 export DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+
+source /home/rstrom/.config/broot/launcher/bash/br
+
+eval "$(zoxide init zsh)"
