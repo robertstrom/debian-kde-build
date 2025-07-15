@@ -307,6 +307,9 @@ wget https://raw.githubusercontent.com/robertstrom/debian-kde-build/refs/heads/m
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 . "$HOME/.cargo/env" 
 
+# Install cargo update
+cargo install cargo-update
+
 # Install macchina (fastfetch alternative)
 cargo install macchina
 
