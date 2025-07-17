@@ -79,7 +79,7 @@ case "$arch" in
     sudo DEBIAN_FRONTEND=noninteractive apt install -yq shellcheck libimage-exiftool-perl pv terminator xclip dolphin krusader kdiff3 kompare xxdiff \
     krename ksnip flameshot html2text csvkit remmina sipcalc xsltproc rinetd httptunnel tesseract-ocr ncdu grepcidr speedtest-cli cifs-utils nfs-common \
     sshuttle mpack filezilla lolcat ripgrep bat dcfldd redis-tools jq keepassxc okular exfat-fuse exfatprogs xsel pandoc poppler-utils net-tools \
-    ffmpeg fonts-liberation zbar-tools rlwrap lolcat 7zip pip virtualenv python3-virtualenv pipx tcpdump tmux fd-find tldr trash-cli \
+    ffmpeg fonts-liberation zbar-tools rlwrap lolcat 7zip pip virtualenv python3-virtualenv pipx tcpdump tmux fd-find tldr trash-cli bind9-dnstools \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm locate \
     qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop vlc stacer audacity obs-studio handbrake handbrake-cli \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin torbrowser-launcher apt-transport-https mc gnupg2 gnupg
