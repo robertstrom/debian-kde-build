@@ -341,7 +341,7 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(git colored-man-pages colorize copyfile copypath fzf eza)/' ~/.zshrc
 
 # Added for ohmyzsh fzf plugin
-echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+echo "export FZF_BASE=~/fzf" >> ~/.zshrc
 
 # Install fzf via github
 cd ~
