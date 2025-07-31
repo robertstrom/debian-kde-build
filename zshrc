@@ -427,6 +427,13 @@ kill -15 $bhtunnelpid
 
 }
 
+remove-loop-device() {
+
+loopdev=$(lsblk /dev/loop* | head -n 2 | tail -n 1 | grep -Eo 'loop[0-9]{1,2}')
+sudo losetup -d /dev/$loopdev
+
+}
+
 
 export PATH="$PATH:/home/rstrom/go/bin/"
 
