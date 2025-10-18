@@ -82,7 +82,7 @@ case "$arch" in
     ffmpeg fonts-liberation zbar-tools rlwrap lolcat 7zip pip virtualenv python3-virtualenv pipx tcpdump tmux fd-find tldr trash-cli bind9-dnstools \
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm locate qbittorrent \
     qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop vlc stacer audacity obs-studio handbrake handbrake-cli \
-    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin torbrowser-launcher apt-transport-https mc gnupg2 gnupg yamllint
+    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin torbrowser-launcher apt-transport-https mc gnupg2 gnupg yamllint virtnbdbackup
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
