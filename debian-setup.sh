@@ -321,6 +321,10 @@ cargo install --locked --features clipboard broot
 # https://github.com/ajeetdsouza/zoxide
 cargo install zoxide
 
+# Install jless
+# https://jless.io/
+cargo install jless
+
 
 ####################################################################################################################
 #
