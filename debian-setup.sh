@@ -83,6 +83,7 @@ case "$arch" in
     golang sublist3r tcpspy mono-complete zsh qemu-system-x86 libvirt-daemon-system virtinst virt-manager virt-viewer ovmf swtpm locate qbittorrent \
     qemu-utils guestfs-tools libosinfo-bin tuned fonts-powerline autojump htop glances btop vlc stacer audacity obs-studio handbrake handbrake-cli \
     docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin torbrowser-launcher apt-transport-https mc gnupg2 gnupg yamllint virtnbdbackup
+    libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
     ;;
   i?86)
     echo "Architecture: x86 (32-bit)"
