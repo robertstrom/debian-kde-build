@@ -206,6 +206,11 @@ alias ssh-do3='ssh rstrom@do3.robertstrom.org'
 alias ssh-do4='ssh rstrom@do4.robertstrom.org'
 alias ssh-proxmox='ssh root@proxmox-3'
 
+# Mount QNAP-1 Home directory
+alias mount-QNAP-1='sudo mount -t cifs -o gid=1000,uid=1000,vers=3.0,username=rstrom //192.168.0.99/rstrom /mnt/QNAP-1'
+alias unmount-QNAP-1='sudo umount /mnt/QNAP-1'
+alias QNAP-1='cd /mnt/QNAP-1'
+
 # Functions added - 4/10/2022 RStrom
 function grepEmailAddresses() {
 	grep -E -o "\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-](+.|&#46;)[a-zA-Z0-9.-]+\b" $1
