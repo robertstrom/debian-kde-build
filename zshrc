@@ -214,48 +214,56 @@ alias QNAP-1='cd /mnt/QNAP-1'
 
 # Fix ssh known_hosts file
 # RStrom - Added 2026-02-02
-function fix-known-hosts-file() {
+forget-host() {
+    # Guidance / Usage Block
+    if [ -z "$1" ]; then
+        echo "Usage: forget-host [user@host | host] [optional-port]"
+        echo ""
+        echo "Examples:"
+        echo "  forget-host 192.168.1.50             (Standard)"
+        echo "  forget-host root@192.168.1.50        (Specific user)"
+        echo "  forget-host 192.168.1.50 2222        (Custom port)"
+        echo "  forget-host admin@192.168.1.50 2222  (User + Port)"
+        return 1
+    fi
 
-    local host=$1
-        local port=$2
-        local target=$host
+    local destination=$1
+    local port=$2
+    local hostname=$destination
 
-        if [ -z "$host" ]; then
-            echo "Usage: fix-known-hosts-file [hostname/IP] [optional-port]"
-            return 1
-        fi
+    # Strip username if present (user@hostname -> hostname)
+    if [[ "$destination" == *"@"* ]]; then
+        hostname="${destination#*@}"
+    fi
 
-        # Handle port formatting for ssh-keygen
-        if [ -n "$port" ]; then
-            target="[$host]:$port"
-        fi
+    local target=$hostname
+    if [ -n "$port" ]; then
+        target="[$hostname]:$port"
+    fi
 
-        # 1. Remove the old key
-        if ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$target"; then
-            echo "Removed $target from known_hosts."
-            echo "Reconnecting..."
-            echo "-----------------------------------"
-            
-            # 2. Build the SSH command as an array
-            local -a ssh_cmd
-            if [[ "$TERMINAL_PROGRAM" == "kitty" || -n "$KITTY_PID" ]]; then
-                ssh_cmd=(kitty +kitten ssh)
-            else
-                ssh_cmd=(ssh)
-            fi
-
-            # 3. Add port flag if needed
-            [ -n "$port" ] && ssh_cmd+=(-p "$port")
-
-            # 4. Execute (the @ expands the array elements individually)
-            "${ssh_cmd[@]}" "$host"
+    # 1. Remove the old key
+    if ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$target"; then
+        echo "Successfully removed $target from known_hosts."
+        echo "Reconnecting to $destination..."
+        echo "-----------------------------------"
+        
+        # 2. Build the SSH command array
+        local -a ssh_cmd
+        if [[ "$TERMINAL_PROGRAM" == "kitty" || -n "$KITTY_PID" ]]; then
+            ssh_cmd=(kitty +kitten ssh)
         else
-            echo "Error: Failed to remove $target."
-            return 1
+            ssh_cmd=(ssh)
         fi
 
-}
+        [ -n "$port" ] && ssh_cmd+=(-p "$port")
 
+        # 3. Execute
+        "${ssh_cmd[@]}" "$destination"
+    else
+        echo "Error: Failed to remove $target."
+        return 1
+    fi
+}
 
 # Functions added - 4/10/2022 RStrom
 function grepEmailAddresses() {
