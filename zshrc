@@ -214,10 +214,10 @@ alias QNAP-1='cd /mnt/QNAP-1'
 
 # Fix ssh known_hosts file
 # RStrom - Added 2026-02-02
-forget-host() {
+fix-known-hosts-file() {
     # Guidance / Usage Block
     if [ -z "$1" ]; then
-        echo "Usage: forget-host [user@host | host] [optional-port]"
+        echo "Usage: fix-known-hosts-file [user@host | host] [optional-port]"
         echo ""
         echo "Examples:"
         echo "  forget-host 192.168.1.50             (Standard)"
