@@ -211,6 +211,52 @@ alias mount-QNAP-1='sudo mount -t cifs -o gid=1000,uid=1000,vers=3.0,username=rs
 alias unmount-QNAP-1='sudo umount /mnt/QNAP-1'
 alias QNAP-1='cd /mnt/QNAP-1'
 
+
+# Fix ssh known_hosts file
+# RStrom - Added 2026-02-02
+function fix-known-hosts-file() {
+
+    local host=$1
+        local port=$2
+        local target=$host
+
+        if [ -z "$host" ]; then
+            echo "Usage: fix-known-hosts-file [hostname/IP] [optional-port]"
+            return 1
+        fi
+
+        # Handle port formatting for ssh-keygen
+        if [ -n "$port" ]; then
+            target="[$host]:$port"
+        fi
+
+        # 1. Remove the old key
+        if ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$target"; then
+            echo "Removed $target from known_hosts."
+            echo "Reconnecting..."
+            echo "-----------------------------------"
+            
+            # 2. Build the SSH command as an array
+            local -a ssh_cmd
+            if [[ "$TERMINAL_PROGRAM" == "kitty" || -n "$KITTY_PID" ]]; then
+                ssh_cmd=(kitty +kitten ssh)
+            else
+                ssh_cmd=(ssh)
+            fi
+
+            # 3. Add port flag if needed
+            [ -n "$port" ] && ssh_cmd+=(-p "$port")
+
+            # 4. Execute (the @ expands the array elements individually)
+            "${ssh_cmd[@]}" "$host"
+        else
+            echo "Error: Failed to remove $target."
+            return 1
+        fi
+
+}
+
+
 # Functions added - 4/10/2022 RStrom
 function grepEmailAddresses() {
 	grep -E -o "\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-](+.|&#46;)[a-zA-Z0-9.-]+\b" $1
